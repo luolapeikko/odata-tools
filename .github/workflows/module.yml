@@ -1,0 +1,44 @@
+name: Module Common CI
+on:
+  workflow_call:
+    inputs:
+      package-path:
+        required: true
+        type: string
+
+env:
+  # Setting an environment variable with the value of a configuration variable
+  PUBLISH_BRANCH: "refs/heads/main"
+  PACKAGE_NAME: "unknown"
+  PACKAGE_VERSION: "unknown"
+  NPM_VERSION: "unknown"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: luolapeikko/github-actions/read-package-info@v0
+        with:
+          working-directory: ${{ inputs.package-path }}
+      - uses: pnpm/action-setup@9b5745cdf0a2e8c2620f0746130f809adb911c19 # v4
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 'lts/*'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install workspace deps
+        run: pnpm install
+
+      - name: Build and test
+        run: pnpm run test
+
+      - name: Lint
+        run: pnpm run lint
+
+      - name: Publish ${{env.PACKAGE_NAME}} ${{env.PACKAGE_VERSION}}
+        working-directory: ${{ inputs.package-path }}
+        if: |
+          github.ref == env.PUBLISH_BRANCH &&
+          env.PACKAGE_VERSION != env.NPM_VERSION
+        run: npm publish --access public

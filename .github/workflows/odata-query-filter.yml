@@ -1,0 +1,27 @@
+name: odata-query-filter CI/CD
+on:
+  push:
+    branches: [main]
+    paths:
+      - "packages/odata-query-filter/**"
+      - ".github/workflows/odata-query-filter.yml"
+      - ".github/workflows/module.yml"
+      - "package.json"
+  pull_request:
+    branches: [main]
+    paths:
+      - "packages/odata-query-filter/**"
+      - ".github/workflows/odata-query-filter.yml"
+      - ".github/workflows/module.yml"
+      - "package.json"
+
+permissions:
+  id-token: write # Required for OIDC
+  contents: read
+
+jobs:
+  module-flow:
+    uses: ./.github/workflows/module.yml
+    secrets: inherit
+    with:
+      package-path: packages/odata-query-filter

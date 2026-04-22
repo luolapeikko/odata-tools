@@ -1,0 +1,26 @@
+{
+  "name": "odata-tools",
+  "version": "0.0.1",
+  "description": "OASIS OData tools",
+  "private": true,
+  "scripts": {
+    "build": "pnpm -r build",
+    "pretest": "pnpm -r run build && pnpm -r run validate",
+    "test": "vitest run --typecheck --coverage",
+    "lint": "biome check",
+    "validate": "pnpm -r validate",
+    "docs": "typedoc --options typedoc.json --tsconfig tsconfig.workspace.json"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.4.12",
+    "@vitest/coverage-v8": "^4.1.4",
+    "c8": "^11.0.0",
+    "tsdown": "^0.21.9",
+    "typedoc": "^0.28.19",
+    "typedoc-plugin-dt-links": "^2.0.51",
+    "typedoc-plugin-mdn-links": "^5.1.1",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.4"
+  },
+  "packageManager": "pnpm@10.33.0+sha512.10568bb4a6afb58c9eb3630da90cc9516417abebd3fabbe6739f0ae795728da1491e9db5a544c76ad8eb7570f5c4bb3d6c637b2cb41bfdcdb47fa823c8649319"
+}

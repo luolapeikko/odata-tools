@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@luolapeikko/odata-mongoose-query-filter": ["packages/odata-mongoose-query-filter/src/index.ts"],
+      "@luolapeikko/odata-query-filter": ["packages/odata-query-filter/src/index.ts"]
+    }
+  },
+  "extends": "./tsconfig.base.json"
+}

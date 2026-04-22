@@ -1,0 +1,4 @@
+{
+  "files": [],
+  "references": [{ "path": "./packages/odata-mongoose-query-filter" }, { "path": "./packages/odata-query-filter" }]
+}

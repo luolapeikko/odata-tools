@@ -1,0 +1,39 @@
+{
+  "$schema": "https://www.schemastore.org/package.json",
+  "name": "@luolapeikko/odata-query-filter",
+  "version": "0.0.6",
+  "description": "OData $filter string parser and evaluator",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
+  "exports": {
+    "import": {
+      "types": "./dist/index.d.mts",
+      "default": "./dist/index.mjs"
+    },
+    "require": {
+      "types": "./dist/index.d.cts",
+      "default": "./dist/index.cjs"
+    },
+    "default": "./dist/index.mjs"
+  },
+	"scripts": {
+		"build": "tsdown src/index.ts --sourcemap --minify --format cjs,esm --dts --clean -c tsconfig.build.json",
+		"validate": "tsc --noEmit"
+	},
+	"files": [
+		"dist"
+	],
+  "repository": "github:luolapeikko/odata-tools",
+  "keywords": [
+    "odata",
+    "query",
+    "filter"
+  ],
+  "author": "mharj",
+  "homepage": "https://github.com/luolapeikko/odata-tools#readme",
+  "bugs": {
+    "url": "https://github.com/luolapeikko/odata-tools/issues"
+  },
+  "license": "MIT"
+}
