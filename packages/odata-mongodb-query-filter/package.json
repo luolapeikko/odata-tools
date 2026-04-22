@@ -1,8 +1,8 @@
 {
   "$schema": "https://www.schemastore.org/package.json",
-  "name": "@luolapeikko/odata-mongoose-query-filter",
+  "name": "@luolapeikko/odata-mongodb-query-filter",
   "version": "0.0.1",
-  "description": "OData $filter for mongoose",
+  "description": "OData $filter parsing for MongoDB and mongoose",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.mts",
@@ -29,6 +29,7 @@
     "odata",
     "query",
     "filter",
+    "mongodb",
     "mongoose"
   ],
   "author": "mharj",

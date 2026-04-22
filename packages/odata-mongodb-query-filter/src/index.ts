@@ -173,9 +173,11 @@ function buildExpression(node: AstNode, context: BuildContext): MongoExpression 
 }
 
 /**
- * Parses an OData $filter string and builds a MongoDB filter object that can be used in Mongoose queries.
+ * Parses an OData $filter string and builds a MongoDB filter object that can be used in Mongodb or Mongoose queries.
  * @param filter The OData $filter string to parse.
- * @returns A MongoDB filter object that can be used in Mongoose queries.
+ * @returns A MongoDB filter object that can be used in Mongodb or Mongoose queries.
+ * @example
+ * const data = await MyModel.find(parseODataFilter("name eq 'Test' and age gt 30"));
  */
 export function parseODataFilter(filter: string): ODataMongooseFilter {
 	const node = parseODataAstNode(filter);

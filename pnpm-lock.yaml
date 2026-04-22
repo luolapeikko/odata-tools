@@ -36,7 +36,7 @@ importers:
         specifier: ^4.1.4
         version: 4.1.5(@vitest/coverage-v8@4.1.5)(vite@8.0.9(yaml@2.8.3))
 
-  packages/odata-mongoose-query-filter:
+  packages/odata-mongodb-query-filter:
     devDependencies:
       '@luolapeikko/odata-query-filter':
         specifier: workspace:*
