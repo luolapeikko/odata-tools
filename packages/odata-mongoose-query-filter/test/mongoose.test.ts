@@ -1,7 +1,7 @@
 import {MongoMemoryServer} from 'mongodb-memory-server';
 import {connect, model, Schema} from 'mongoose';
 import {afterAll, beforeAll, describe, expect, it} from 'vitest';
-import {createODataMongooseFilter} from '../src/index';
+import {parseODataFilter} from '../src/index';
 
 type Main = {
 	name: string;
@@ -69,7 +69,7 @@ describe('Mongoose schema compatibility', () => {
 	});
 
 	async function findNames(filter: string): Promise<string[]> {
-		const results = await MainModel.find(createODataMongooseFilter(filter)).sort({name: 1});
+		const results = await MainModel.find(parseODataFilter(filter)).sort({name: 1});
 		return results.map((item) => item.name);
 	}
 

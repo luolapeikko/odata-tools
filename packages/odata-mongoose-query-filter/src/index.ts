@@ -1,16 +1,22 @@
 import {type AstNode, type ComparisonOperator, type LogicalOperator, parseODataAstNode} from '@luolapeikko/odata-query-filter';
 
-type MongoLiteral = string | number | boolean | Date | null;
+export type MongoLiteral = string | number | boolean | Date | null;
 
 type BuildContext = {
 	readonly scopedVariables: ReadonlySet<string>;
 };
 
-type MongoExpression =
+/**
+ * All possible MongoDB expression types that can be generated from OData filters.
+ */
+export type MongoExpression =
 	| MongoLiteral
 	| string
 	| {readonly [operator: string]: MongoExpression | readonly MongoExpression[] | {readonly [key: string]: MongoExpression | string} | boolean};
 
+/**
+ * The resulting filter object type that can be used in Mongoose queries.
+ */
 export type ODataMongooseFilter = {
 	readonly $expr: MongoExpression;
 };
@@ -166,7 +172,12 @@ function buildExpression(node: AstNode, context: BuildContext): MongoExpression 
 	}
 }
 
-export function createODataMongooseFilter(filter: string): ODataMongooseFilter {
+/**
+ * Parses an OData $filter string and builds a MongoDB filter object that can be used in Mongoose queries.
+ * @param filter The OData $filter string to parse.
+ * @returns A MongoDB filter object that can be used in Mongoose queries.
+ */
+export function parseODataFilter(filter: string): ODataMongooseFilter {
 	const node = parseODataAstNode(filter);
 	const context: BuildContext = {scopedVariables: new Set<string>()};
 	return {$expr: buildExpression(node, context)};
