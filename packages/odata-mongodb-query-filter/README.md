@@ -1,8 +1,8 @@
 # @luolapeikko/odata-mongodb-query-filter
 
 [![TypeScript](https://badges.frapsoft.com/typescript/code/typescript.svg?v=101)](https://github.com/ellerbrock/typescript-badges/)
-[![Maintainability](https://qlty.sh/gh/luolapeikko/projects/odata-tools/maintainability.svg)](https://qlty.sh/gh/luolapeikko/projects/odata-query-filter)
-[![Code Coverage](https://qlty.sh/gh/luolapeikko/projects/odata-tools/coverage.svg)](https://qlty.sh/gh/luolapeikko/projects/odata-query-filter)
+[![Maintainability](https://qlty.sh/gh/luolapeikko/projects/odata-tools/maintainability.svg)](https://qlty.sh/gh/luolapeikko/projects/odata-tools)
+[![Code Coverage](https://qlty.sh/gh/luolapeikko/projects/odata-tools/coverage.svg)](https://qlty.sh/gh/luolapeikko/projects/odata-tools)
 [![CI/CD](https://github.com/luolapeikko/odata-tools/actions/workflows/odata-mongodb-query-filter.yml/badge.svg)](https://github.com/luolapeikko/odata-tools/actions/workflows/odata-mongodb-query-filter.yml)
 
 ## Builds a MongoDB/Mongoose query filter based on OData $filter query values.
