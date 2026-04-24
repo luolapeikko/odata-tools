@@ -1,7 +1,7 @@
 {
   "$schema": "https://www.schemastore.org/package.json",
   "name": "@luolapeikko/odata-query-filter",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "OData $filter string parser and evaluator",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
@@ -17,13 +17,13 @@
     },
     "default": "./dist/index.mjs"
   },
-	"scripts": {
-		"build": "tsdown src/index.ts --sourcemap --minify --format cjs,esm --dts --clean -c tsconfig.build.json",
-		"validate": "tsc --noEmit"
-	},
-	"files": [
-		"dist"
-	],
+  "scripts": {
+    "build": "tsdown src/index.ts --sourcemap --minify --format cjs,esm --dts --clean -c tsconfig.build.json",
+    "validate": "tsc --noEmit"
+  },
+  "files": [
+    "dist"
+  ],
   "repository": "github:luolapeikko/odata-tools",
   "keywords": [
     "odata",
