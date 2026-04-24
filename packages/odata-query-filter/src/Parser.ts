@@ -1,4 +1,4 @@
-import type {AstNode, ComparisonOperator, Token, TokenType} from './tokenTypes';
+import type {ComparisonOperator, FilterAstNode, Token, TokenType} from './tokenTypes';
 
 const COMPARISON_OPS = new Set<string>(['eq', 'ne', 'gt', 'ge', 'lt', 'le']);
 const LOGICAL_OPS = new Set<string>(['and', 'or']);
@@ -14,7 +14,7 @@ export class Parser {
 		this.tokens = tokens;
 	}
 
-	public parse(): AstNode {
+	public parse(): FilterAstNode {
 		const node = this.parseOr();
 		if (this.pos < this.tokens.length) {
 			throw new Error(`Unexpected token '${this.tokens[this.pos]?.value}' at position ${this.pos}`);
@@ -47,7 +47,7 @@ export class Parser {
 	}
 
 	// OrExpression = AndExpression ('or' AndExpression)*
-	private parseOr(): AstNode {
+	private parseOr(): FilterAstNode {
 		let left = this.parseAnd();
 		while (this.peek()?.type === 'identifier' && this.peek()?.value === 'or') {
 			this.advance(); // consume 'or'
@@ -58,7 +58,7 @@ export class Parser {
 	}
 
 	// AndExpression = NotExpression ('and' NotExpression)*
-	private parseAnd(): AstNode {
+	private parseAnd(): FilterAstNode {
 		let left = this.parseNot();
 		while (this.peek()?.type === 'identifier' && this.peek()?.value === 'and') {
 			this.advance(); // consume 'and'
@@ -69,7 +69,7 @@ export class Parser {
 	}
 
 	// NotExpression = 'not' NotExpression | Comparison
-	private parseNot(): AstNode {
+	private parseNot(): FilterAstNode {
 		if (this.peek()?.type === 'identifier' && this.peek()?.value === 'not') {
 			this.advance(); // consume 'not'
 			const operand = this.parseNot();
@@ -79,7 +79,7 @@ export class Parser {
 	}
 
 	// Comparison = Primary (CompOp ComparisonValue)?
-	private parseComparison(): AstNode {
+	private parseComparison(): FilterAstNode {
 		const left = this.parsePrimary();
 		const token = this.peek();
 		if (token?.type === 'identifier' && COMPARISON_OPS.has(token.value)) {
@@ -90,7 +90,7 @@ export class Parser {
 		return left;
 	}
 
-	private parseComparisonValue(): AstNode {
+	private parseComparisonValue(): FilterAstNode {
 		const token = this.peek();
 		if (!token) {
 			throw new Error('Unexpected end of input');
@@ -115,7 +115,7 @@ export class Parser {
 	}
 
 	// Primary = Literal | FunctionCall | PropertyPath | '(' Expression ')'
-	private parsePrimary(): AstNode {
+	private parsePrimary(): FilterAstNode {
 		const token = this.peek();
 		if (!token) {
 			throw new Error('Unexpected end of input');
@@ -172,10 +172,10 @@ export class Parser {
 	}
 
 	// FunctionCall = identifier '(' ArgumentList ')'
-	private parseFunctionCall(): AstNode {
+	private parseFunctionCall(): FilterAstNode {
 		const name = this.advance().value; // function name
 		this.expect('lparen');
-		const args: AstNode[] = [];
+		const args: FilterAstNode[] = [];
 		if (this.peek()?.type !== 'rparen') {
 			args.push(this.parseOr());
 			while (this.peek()?.type === 'comma') {
@@ -188,7 +188,7 @@ export class Parser {
 	}
 
 	// PropertyPath = identifier ('/' identifier)*
-	private parsePropertyPathOrLambda(): AstNode {
+	private parsePropertyPathOrLambda(): FilterAstNode {
 		const first = this.expect('identifier').value;
 		if (this.isReservedKeyword(first)) {
 			throw new Error(`Unexpected keyword '${first}'`);

@@ -1,4 +1,4 @@
-import type {AstNode} from './tokenTypes';
+import type {FilterAstNode} from './tokenTypes';
 
 function isStandardToString(v: object): boolean {
 	return (v as {toString?: unknown}).toString === Object.prototype.toString;
@@ -122,7 +122,7 @@ function coerceToStringResult(value: unknown): {ok: true; value: string} | {ok: 
  * @param data The data object to evaluate against.
  * @returns The result of the evaluation.
  */
-export function evaluate(node: AstNode, data: Record<string, unknown>): unknown {
+export function evaluate(node: FilterAstNode, data: Record<string, unknown>): unknown {
 	switch (node.kind) {
 		case 'literal':
 			return node.value;

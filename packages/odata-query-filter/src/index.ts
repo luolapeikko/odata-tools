@@ -1,11 +1,11 @@
 import {evaluate} from './evaluate';
 import {Parser} from './Parser';
 import {tokenize} from './tokenize';
-import type {AstNode} from './tokenTypes';
+import type {FilterAstNode} from './tokenTypes';
 
 export * from './tokenTypes';
 
-export function parseODataAstNode(filter: string): AstNode {
+export function parseODataAstNode(filter: string): FilterAstNode {
 	const parser = new Parser(tokenize(filter));
 	return parser.parse();
 }
@@ -18,7 +18,7 @@ export function parseODataAstNode(filter: string): AstNode {
  * const filter = createODataFilter<{name: string; age: number}>("name eq 'John' and age gt 30");
  * const filter = createODataFilter<{name: string; age: number}>("name eq 'John' or name eq 'Jane'");
  */
-export function createODataFilter<T>(filter: string): (data: T) => boolean {
-	const astNode = parseODataAstNode(filter);
+export function createODataFilter<T>(filter: string | FilterAstNode): (data: T) => boolean {
+	const astNode = typeof filter === 'string' ? parseODataAstNode(filter) : filter;
 	return (data: T) => Boolean(evaluate(astNode, data as unknown as Record<string, unknown>));
 }

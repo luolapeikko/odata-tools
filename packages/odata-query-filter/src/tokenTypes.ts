@@ -11,26 +11,26 @@ export type LogicalOperator = 'and' | 'or';
 export interface ComparisonNode {
 	kind: 'comparison';
 	operator: ComparisonOperator;
-	left: AstNode;
-	right: AstNode;
+	left: FilterAstNode;
+	right: FilterAstNode;
 }
 
 export interface LogicalNode {
 	kind: 'logical';
 	operator: LogicalOperator;
-	left: AstNode;
-	right: AstNode;
+	left: FilterAstNode;
+	right: FilterAstNode;
 }
 
 export interface NotNode {
 	kind: 'not';
-	operand: AstNode;
+	operand: FilterAstNode;
 }
 
 export interface FunctionCallNode {
 	kind: 'functionCall';
 	name: string;
-	args: AstNode[];
+	args: FilterAstNode[];
 }
 
 export interface LiteralNode {
@@ -48,7 +48,10 @@ export interface LambdaNode {
 	path: string[];
 	operator: 'any' | 'all';
 	variable: string;
-	predicate: AstNode;
+	predicate: FilterAstNode;
 }
 
-export type AstNode = ComparisonNode | LogicalNode | NotNode | FunctionCallNode | LiteralNode | PropertyNode | LambdaNode;
+/**
+ * The root type for all AST nodes in the OData filter expression.
+ */
+export type FilterAstNode = ComparisonNode | LogicalNode | NotNode | FunctionCallNode | LiteralNode | PropertyNode | LambdaNode;
