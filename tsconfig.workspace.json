@@ -2,6 +2,7 @@
   "compilerOptions": {
     "paths": {
       "@luolapeikko/odata-mongodb-query-filter": ["packages/odata-mongodb-query-filter/src/index.ts"],
+      "@luolapeikko/odata-mongodb-query-select": ["packages/odata-mongodb-query-select/src/index.ts"],
       "@luolapeikko/odata-query-filter": ["packages/odata-query-filter/src/index.ts"],
       "@luolapeikko/odata-query-select": ["packages/odata-query-select/src/index.ts"]
     }

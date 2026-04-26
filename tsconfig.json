@@ -1,4 +1,9 @@
 {
   "files": [],
-  "references": [{ "path": "./packages/odata-mongodb-query-filter" }, { "path": "./packages/odata-query-filter" }, { "path": "./packages/odata-query-select" }]
+  "references": [
+    { "path": "./packages/odata-mongodb-query-filter" },
+    { "path": "./packages/odata-mongodb-query-select" },
+    { "path": "./packages/odata-query-filter" },
+    { "path": "./packages/odata-query-select" }
+  ]
 }

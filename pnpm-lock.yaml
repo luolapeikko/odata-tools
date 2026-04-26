@@ -48,7 +48,21 @@ importers:
         specifier: ^9.5.0
         version: 9.5.0
 
+  packages/odata-mongodb-query-select:
+    devDependencies:
+      '@luolapeikko/odata-query-select':
+        specifier: workspace:*
+        version: link:../odata-query-select
+      mongodb-memory-server:
+        specifier: ^11.0.1
+        version: 11.0.1
+      mongoose:
+        specifier: ^9.5.0
+        version: 9.5.0
+
   packages/odata-query-filter: {}
+
+  packages/odata-query-select: {}
 
 packages:
 

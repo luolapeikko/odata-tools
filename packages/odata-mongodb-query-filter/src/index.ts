@@ -1,4 +1,4 @@
-import {type AstNode, type ComparisonOperator, type LogicalOperator, parseODataAstNode} from '@luolapeikko/odata-query-filter';
+import {type ComparisonOperator, type FilterAstNode, type LogicalOperator, parseODataAstNode} from '@luolapeikko/odata-query-filter';
 
 export type MongoLiteral = string | number | boolean | Date | null;
 
@@ -131,7 +131,7 @@ function createFunctionCallExpression(name: string, args: MongoExpression[]): Mo
 	}
 }
 
-function buildExpression(node: AstNode, context: BuildContext): MongoExpression {
+function buildExpression(node: FilterAstNode, context: BuildContext): MongoExpression {
 	const kind = node.kind;
 	switch (kind) {
 		case 'literal':
