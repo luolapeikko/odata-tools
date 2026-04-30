@@ -57,7 +57,7 @@ The OData `$filter` expression is parsed into an AST and then translated into a 
 { $expr: { $cond: [{ $isArray: "$array" }, { $allElementsTrue: [{ $map: { input: "$array", as: "a", in: { $eq: ["$$a.other", "Item1"] } } }] }, false] } }
 ```
 
-## Usage examples
+## Usage examples.
 
 ```typescript
 import { parseODataFilter } from "@luolapeikko/odata-mongodb-query-filter";

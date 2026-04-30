@@ -15,7 +15,7 @@ record/some -> record.some
 array/other -> array.other
 Wildcard selection (*) returns an empty projection object, which means all fields are returned by default.
 
-## Usage examples
+## Usage examples.
 
 ### Mongoose find
 

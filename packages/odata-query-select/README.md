@@ -10,7 +10,7 @@
 Parses OData `$select` values into an AST and applies field projection to plain JavaScript/TypeScript objects.
 Supports top-level and nested property selection (for example `name,address/city`), wildcard selection (`*`), and duplicate item normalization.
 
-## Usage examples
+## Usage examples.
 
 ```typescript
 import {createODataSelectPicker} from '@luolapeikko/odata-query-select';

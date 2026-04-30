@@ -10,7 +10,7 @@
 Handles most OData query comparison operators (`eq` | `ne` | `gt` | `ge` | `lt` | `le`), logical operators (`and` | `or` | `not`), array lambda operators (`any` | `all`), and functions (`contains` | `startswith` | `endswith` | `tolower` | `toupper` | `trim` | `length` | `concat` | `indexof` | `substring`).
 Automatic ISO DateTime string / Date handling, and uses `toString()` for custom objects in comparisons.
 
-## Usage examples
+## Usage examples.
 
 ```typescript
 interface Person {
