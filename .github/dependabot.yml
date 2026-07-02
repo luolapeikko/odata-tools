@@ -2,9 +2,11 @@ version: 2
 updates:
   - package-ecosystem: "npm"
     directories:
-      - "/packages/net-address"
-      - "/packages/net-socket-address"
-      - "/packages/unix-socket-address"
+      - "/"
+      - "/packages/odata-query-filter"
+      - "/packages/odata-query-select"
+      - "/packages/odata-mongodb-query-filter"
+      - "/packages/odata-mongodb-query-select"
     schedule:
       interval: "weekly"
     allow:
