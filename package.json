@@ -12,15 +12,15 @@
     "docs": "typedoc --options typedoc.json --tsconfig tsconfig.workspace.json"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.10",
+    "@biomejs/biome": "2.5.13",
     "@vitest/coverage-v8": "^4.1.11",
     "c8": "^12.0.0",
-    "tsdown": "^0.22.14",
+    "tsdown": "^0.23.0",
     "typedoc": "^0.28.20",
-    "typedoc-plugin-dt-links": "^2.0.69",
+    "typedoc-plugin-dt-links": "^2.0.72",
     "typedoc-plugin-mdn-links": "^5.1.1",
     "typescript": "^6.0.3",
-    "vite": "^8.2.2",
+    "vite": "^8.3.0",
     "vitest": "^4.1.11"
   },
   "packageManager": "pnpm@10.33.0+sha512.10568bb4a6afb58c9eb3630da90cc9516417abebd3fabbe6739f0ae795728da1491e9db5a544c76ad8eb7570f5c4bb3d6c637b2cb41bfdcdb47fa823c8649319"
